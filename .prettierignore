@@ -1,0 +1,24 @@
+# Dossiers à ignorer
+node_modules
+.next
+dist
+coverage
+out
+lib/example
+
+# Fichiers à ignorer
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+*.lock
+*.snap
+
+# Config / build
+.env
+*.config.js
+*.config.cjs
+*.config.mjs
+*.config.ts
+
+# Autres
+*.log
