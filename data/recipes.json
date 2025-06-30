@@ -1,0 +1,196 @@
+{
+  "recipes": [
+    {
+      "id": "rec-001",
+      "title": "Salade Quinoa aux Légumes",
+      "description": "Une salade fraîche et nutritive parfaite pour l'été",
+      "ingredients": [
+        { "name": "Quinoa", "quantity": 100, "unit": "g" },
+        { "name": "Tomates cerises", "quantity": 200, "unit": "g" },
+        { "name": "Concombre", "quantity": 1, "unit": "unité" },
+        { "name": "Avocat", "quantity": 1, "unit": "unité" },
+        { "name": "Huile d'olive", "quantity": 30, "unit": "ml" },
+        { "name": "Jus de citron", "quantity": 15, "unit": "ml" },
+        { "name": "Sel", "quantity": 5, "unit": "g" },
+        { "name": "Poivre", "quantity": 2, "unit": "g" }
+      ],
+      "steps": [
+        "Rincer le quinoa à l'eau froide",
+        "Faire cuire le quinoa dans 200ml d'eau bouillante pendant 15 minutes",
+        "Laisser refroidir le quinoa",
+        "Couper les tomates en deux",
+        "Éplucher et couper le concombre en dés",
+        "Couper l'avocat en morceaux",
+        "Mélanger tous les ingrédients dans un saladier",
+        "Assaisonner avec l'huile d'olive, le citron, le sel et le poivre"
+      ],
+      "nutrition": {
+        "calories": 320,
+        "proteins": 12,
+        "carbs": 45,
+        "fats": 15,
+        "fiber": 8
+      },
+      "metadata": {
+        "prepTime": 10,
+        "cookTime": 15,
+        "difficulty": 2,
+        "servings": 2,
+        "tags": ["végétarien", "vegan", "sans gluten", "rapide (< 15min)", "méditerranéenne"]
+      },
+      "isFavorite": false
+    },
+    {
+      "id": "rec-002",
+      "title": "Poulet Grillé aux Herbes",
+      "description": "Filet de poulet grillé avec des herbes fraîches",
+      "ingredients": [
+        { "name": "Filet de poulet", "quantity": 300, "unit": "g" },
+        { "name": "Thym frais", "quantity": 10, "unit": "g" },
+        { "name": "Romarin", "quantity": 5, "unit": "g" },
+        { "name": "Huile d'olive", "quantity": 20, "unit": "ml" },
+        { "name": "Ail", "quantity": 2, "unit": "gousses" },
+        { "name": "Sel", "quantity": 5, "unit": "g" },
+        { "name": "Poivre", "quantity": 3, "unit": "g" }
+      ],
+      "steps": [
+        "Préchauffer le four à 200°C",
+        "Hacher finement l'ail et les herbes",
+        "Mélanger l'huile d'olive avec l'ail et les herbes",
+        "Badigeonner les filets de poulet avec le mélange",
+        "Saler et poivrer",
+        "Faire griller 8-10 minutes de chaque côté",
+        "Laisser reposer 5 minutes avant de servir"
+      ],
+      "nutrition": {
+        "calories": 280,
+        "proteins": 35,
+        "carbs": 2,
+        "fats": 15,
+        "fiber": 1
+      },
+      "metadata": {
+        "prepTime": 15,
+        "cookTime": 20,
+        "difficulty": 2,
+        "servings": 2,
+        "tags": ["riche en protéines", "française", "moyen (15-30min)"]
+      },
+      "isFavorite": false
+    },
+    {
+      "id": "rec-003",
+      "title": "Smoothie Bowl Acai",
+      "description": "Bowl coloré et nutritif parfait pour le petit-déjeuner",
+      "ingredients": [
+        { "name": "Pulpe d'açaí", "quantity": 100, "unit": "g" },
+        { "name": "Banane", "quantity": 1, "unit": "unité" },
+        { "name": "Myrtilles", "quantity": 50, "unit": "g" },
+        { "name": "Granola", "quantity": 30, "unit": "g" },
+        { "name": "Noix de coco râpée", "quantity": 15, "unit": "g" },
+        { "name": "Miel", "quantity": 10, "unit": "ml" }
+      ],
+      "steps": [
+        "Mixer la pulpe d'açaí avec la banane",
+        "Verser dans un bol",
+        "Décorer avec les myrtilles",
+        "Ajouter le granola",
+        "Parsemer de noix de coco râpée",
+        "Arroser de miel"
+      ],
+      "nutrition": {
+        "calories": 250,
+        "proteins": 6,
+        "carbs": 45,
+        "fats": 8,
+        "fiber": 7
+      },
+      "metadata": {
+        "prepTime": 10,
+        "cookTime": 0,
+        "difficulty": 1,
+        "servings": 1,
+        "tags": ["végétarien", "vegan", "sans gluten", "rapide (< 15min)", "petit-déjeuner"]
+      },
+      "isFavorite": false
+    },
+    {
+      "id": "rec-004",
+      "title": "Pasta Carbonara",
+      "description": "Classique italien crémeux et savoureux",
+      "ingredients": [
+        { "name": "Spaghetti", "quantity": 200, "unit": "g" },
+        { "name": "Lardons", "quantity": 100, "unit": "g" },
+        { "name": "Œufs", "quantity": 2, "unit": "unité" },
+        { "name": "Parmesan râpé", "quantity": 50, "unit": "g" },
+        { "name": "Poivre noir", "quantity": 5, "unit": "g" },
+        { "name": "Sel", "quantity": 5, "unit": "g" }
+      ],
+      "steps": [
+        "Faire cuire les pâtes dans l'eau salée",
+        "Faire revenir les lardons à la poêle",
+        "Battre les œufs avec le parmesan",
+        "Égoutter les pâtes en gardant un peu d'eau",
+        "Mélanger les pâtes avec les lardons",
+        "Hors du feu, ajouter le mélange œufs-parmesan",
+        "Remuer rapidement pour créer la sauce crémeuse",
+        "Poivrer généreusement"
+      ],
+      "nutrition": {
+        "calories": 450,
+        "proteins": 20,
+        "carbs": 60,
+        "fats": 18,
+        "fiber": 3
+      },
+      "metadata": {
+        "prepTime": 10,
+        "cookTime": 15,
+        "difficulty": 3,
+        "servings": 2,
+        "tags": ["italienne", "moyen (15-30min)", "difficile"]
+      },
+      "isFavorite": false
+    },
+    {
+      "id": "rec-005",
+      "title": "Buddha Bowl Végétarien",
+      "description": "Assiette équilibrée avec légumes, céréales et protéines",
+      "ingredients": [
+        { "name": "Riz complet", "quantity": 100, "unit": "g" },
+        { "name": "Pois chiches", "quantity": 150, "unit": "g" },
+        { "name": "Brocoli", "quantity": 200, "unit": "g" },
+        { "name": "Carottes", "quantity": 2, "unit": "unité" },
+        { "name": "Avocat", "quantity": 1, "unit": "unité" },
+        { "name": "Graines de sésame", "quantity": 10, "unit": "g" },
+        { "name": "Sauce soja", "quantity": 15, "unit": "ml" },
+        { "name": "Huile de sésame", "quantity": 10, "unit": "ml" }
+      ],
+      "steps": [
+        "Faire cuire le riz complet",
+        "Faire cuire les pois chiches",
+        "Faire cuire le brocoli à la vapeur",
+        "Râper les carottes",
+        "Couper l'avocat en tranches",
+        "Disposer tous les ingrédients dans un bol",
+        "Arroser de sauce soja et d'huile de sésame",
+        "Parsemer de graines de sésame"
+      ],
+      "nutrition": {
+        "calories": 380,
+        "proteins": 15,
+        "carbs": 55,
+        "fats": 12,
+        "fiber": 12
+      },
+      "metadata": {
+        "prepTime": 20,
+        "cookTime": 25,
+        "difficulty": 2,
+        "servings": 2,
+        "tags": ["végétarien", "vegan", "sans gluten", "asiatique", "long (> 30min)"]
+      },
+      "isFavorite": false
+    }
+  ]
+} 

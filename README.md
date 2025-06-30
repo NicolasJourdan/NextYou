@@ -9,10 +9,14 @@ Une application Progressive Web App (PWA) moderne construite avec Next.js 15.
 - **Interface moderne** - Design responsive et accessible
 - **Performance optimisée** - Chargement rapide avec cache
 - **Docker ready** - Déploiement simplifié avec Docker
+- **Base de données MySQL** - Stockage des recettes et exercices
 
 ## 🛠️ Technologies
 
 - **Next.js 15** - Framework React moderne
+- **React 19** - Bibliothèque UI
+- **HeroUI** - Composants UI modernes
+- **MySQL** - Base de données
 - **Docker** - Conteneurisation
 - **PWA** - Service Worker et manifeste
 - **ESLint + Prettier** - Qualité de code
@@ -22,13 +26,39 @@ Une application Progressive Web App (PWA) moderne construite avec Next.js 15.
 ### Prérequis
 
 - Node.js 18+ 
-- Docker
+- Docker (optionnel)
+- Git
+
+### Configuration des variables d'environnement
+
+1. **Créer le fichier `.env` :**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Modifier les variables selon vos besoins :**
+   ```env
+   # Configuration de la base de données
+   DB_HOST=mysql
+   DB_PORT=3307
+   DB_USER=nextyou
+   DB_PASSWORD=nextyou123
+   DB_NAME=nextyou
+
+   # Configuration MySQL
+   MYSQL_ROOT_PASSWORD=root123
+
+   # Configuration de l'application
+   NODE_ENV=development
+   NEXT_PUBLIC_APP_NAME=NextYou
+   NEXT_PUBLIC_APP_URL=http://localhost:3001
+   ```
 
 ### Installation locale
 
 ```bash
 # Cloner le repository
-git clone https://github.com/NicolasJourdan/NextYou.git
+git clone https://github.com/votre-username/NextYou.git
 cd NextYou
 
 # Installer les dépendances
@@ -38,7 +68,7 @@ npm install
 npm run dev
 ```
 
-L'application sera disponible sur `http://localhost:3001`
+L'application sera disponible sur `http://localhost:3000`
 
 ### Avec Docker
 
@@ -49,6 +79,8 @@ make up
 # Ou directement
 docker compose up -d --build
 ```
+
+L'application sera disponible sur `http://localhost:3001`
 
 ## 📱 Installation PWA
 
@@ -64,6 +96,13 @@ NextYou/
 │   ├── layout.js       # Layout principal avec métadonnées PWA
 │   ├── page.js         # Page d'accueil
 │   └── globals.css     # Styles globaux
+├── components/         # Composants React
+├── lib/               # Utilitaires et services
+│   └── database.js    # Service de base de données
+├── data/              # Données de test
+│   └── recipes.json   # Recettes de test
+├── database/          # Scripts de base de données
+│   └── init.sql       # Initialisation MySQL
 ├── public/             # Assets statiques
 │   ├── manifest.json   # Manifeste PWA
 │   ├── sw.js          # Service Worker
@@ -115,10 +154,28 @@ Créez un fichier `.env.local` :
 ```env
 # Configuration de base
 NEXT_PUBLIC_APP_NAME=NextYou
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_URL=http://localhost:3001
+
+# Base de données
+DB_HOST=mysql
+DB_PORT=3307
+DB_USER=nextyou
+DB_PASSWORD=nextyou123
+DB_NAME=nextyou
+MYSQL_ROOT_PASSWORD=root123
 
 # Variables spécifiques à votre app
 # NEXT_PUBLIC_API_URL=...
+```
+
+## 🧪 Tests
+
+```bash
+# Tests unitaires (à configurer)
+npm test
+
+# Tests E2E (à configurer)
+npm run test:e2e
 ```
 
 ## 📈 Déploiement
@@ -131,12 +188,27 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ### Autres plateformes
 - **Netlify** : Compatible avec Next.js
 - **Railway** : Déploiement simple
+- **AWS/GCP** : Avec Docker
 
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créez une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Committez vos changements (`git commit -m 'Add AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrez une Pull Request
 
 ## 📄 Licence
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
+## 🙏 Remerciements
+
+- [Next.js](https://nextjs.org/) - Framework React
+- [Vercel](https://vercel.com/) - Plateforme de déploiement
+- [HeroUI](https://heroui.com/) - Composants UI
+- [PWA Builder](https://www.pwabuilder.com/) - Outils PWA
+
 ---
 
-**Développé avec ❤️ par Nicolas Jourdan**
+**Développé avec ❤️ par [Votre Nom]**
