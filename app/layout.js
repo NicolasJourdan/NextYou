@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "../components/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,6 @@ export const metadata = {
   title: "NextYou",
   description: "Application NextYou Progressive Web App",
   manifest: "/manifest.json",
-  themeColor: "#000000",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -36,9 +35,16 @@ export const metadata = {
   }
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#000000"
+};
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning className="dark">
       <head>
         <meta name="application-name" content="NextYou" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -49,7 +55,9 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-tap-highlight" content="no" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
