@@ -31,13 +31,17 @@
         "fats": 15,
         "fiber": 8
       },
-      "metadata": {
-        "prepTime": 10,
-        "cookTime": 15,
-        "difficulty": 2,
-        "servings": 2,
-        "tags": ["végétarien", "vegan", "sans gluten", "rapide (< 15min)", "méditerranéenne"]
-      },
+      "prepTime": 10,
+      "cookTime": 15,
+      "servings": 2,
+      "difficulty": 2,
+      "tags": [
+        { "name": "végétarien", "category": "diet" },
+        { "name": "vegan", "category": "diet" },
+        { "name": "sans gluten", "category": "diet" },
+        { "name": "méditerranéenne", "category": "cuisine" },
+        { "name": "déjeuner", "category": "meal" }
+      ],
       "isFavorite": false
     },
     {
@@ -69,13 +73,15 @@
         "fats": 15,
         "fiber": 1
       },
-      "metadata": {
-        "prepTime": 15,
-        "cookTime": 20,
-        "difficulty": 2,
-        "servings": 2,
-        "tags": ["riche en protéines", "française", "moyen (15-30min)"]
-      },
+      "prepTime": 15,
+      "cookTime": 20,
+      "servings": 2,
+      "difficulty": 2,
+      "tags": [
+        { "name": "riche en protéines", "category": "diet" },
+        { "name": "française", "category": "cuisine" },
+        { "name": "dîner", "category": "meal" }
+      ],
       "isFavorite": false
     },
     {
@@ -105,13 +111,16 @@
         "fats": 8,
         "fiber": 7
       },
-      "metadata": {
-        "prepTime": 10,
-        "cookTime": 0,
-        "difficulty": 1,
-        "servings": 1,
-        "tags": ["végétarien", "vegan", "sans gluten", "rapide (< 15min)", "petit-déjeuner"]
-      },
+      "prepTime": 10,
+      "cookTime": 0,
+      "servings": 1,
+      "difficulty": 1,
+      "tags": [
+        { "name": "végétarien", "category": "diet" },
+        { "name": "vegan", "category": "diet" },
+        { "name": "sans gluten", "category": "diet" },
+        { "name": "petit-déjeuner", "category": "meal" }
+      ],
       "isFavorite": false
     },
     {
@@ -143,13 +152,14 @@
         "fats": 18,
         "fiber": 3
       },
-      "metadata": {
-        "prepTime": 10,
-        "cookTime": 15,
-        "difficulty": 3,
-        "servings": 2,
-        "tags": ["italienne", "moyen (15-30min)", "difficile"]
-      },
+      "prepTime": 10,
+      "cookTime": 15,
+      "servings": 2,
+      "difficulty": 3,
+      "tags": [
+        { "name": "italienne", "category": "cuisine" },
+        { "name": "dîner", "category": "meal" }
+      ],
       "isFavorite": false
     },
     {
@@ -183,13 +193,17 @@
         "fats": 12,
         "fiber": 12
       },
-      "metadata": {
-        "prepTime": 20,
-        "cookTime": 25,
-        "difficulty": 2,
-        "servings": 2,
-        "tags": ["végétarien", "vegan", "sans gluten", "asiatique", "long (> 30min)"]
-      },
+      "prepTime": 20,
+      "cookTime": 25,
+      "servings": 2,
+      "difficulty": 2,
+      "tags": [
+        { "name": "végétarien", "category": "diet" },
+        { "name": "vegan", "category": "diet" },
+        { "name": "sans gluten", "category": "diet" },
+        { "name": "asiatique", "category": "cuisine" },
+        { "name": "déjeuner", "category": "meal" }
+      ],
       "isFavorite": false
     }
   ]

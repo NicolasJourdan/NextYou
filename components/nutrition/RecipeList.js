@@ -10,11 +10,17 @@ export function RecipeList({ initialRecipes = [], error = null }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedPrepTime, setSelectedPrepTime] = useState('all');
+  const [tags, setTags] = useState([]);
 
-  // Mettre à jour les recettes filtrées quand les données changent
   useEffect(() => {
     setRecipes(initialRecipes);
     setFilteredRecipes(initialRecipes);
+    // Extraire tous les noms de tags uniques
+    const allTagNames = initialRecipes
+      .map(recipe => recipe.tags || [])
+      .flat()
+      .map(tag => tag.name);
+    setTags([...new Set(allTagNames)]);
   }, [initialRecipes]);
 
   // Filtrer les recettes
@@ -26,17 +32,19 @@ export function RecipeList({ initialRecipes = [], error = null }) {
         recipe.description.toLowerCase().includes(searchTerm.toLowerCase())
       ;
 
+      console.log('Selected tag', selectedFilter);
+
       const matchesFilter =
         selectedFilter === 'all' ||
         (selectedFilter === 'favorites' && recipe.is_favorite) ||
-        (selectedFilter === 'vegetarian' && recipe.metadata.tags.includes('végétarien'))
+        ( recipe.tags && recipe.tags.some(tag => tag.name === selectedFilter))
       ;
 
       const matchesPrepTime = 
         selectedPrepTime === 'all' ||
-        (selectedPrepTime === 'quick' && recipe.metadata.prepTime < 15) ||
-        (selectedPrepTime === 'medium' && recipe.metadata.prepTime >= 15 && recipe.metadata.prepTime < 30) ||
-        (selectedPrepTime === 'long' && recipe.metadata.prepTime >= 30)
+        (selectedPrepTime === 'quick' && recipe.prepTime < 15) ||
+        (selectedPrepTime === 'medium' && recipe.prepTime >= 15 && recipe.prepTime < 30) ||
+        (selectedPrepTime === 'long' && recipe.prepTime >= 30)
       ;
       
       return matchesSearch && matchesFilter && matchesPrepTime;
@@ -74,7 +82,11 @@ export function RecipeList({ initialRecipes = [], error = null }) {
   };
 
   const handleFilterChange = (value) => {
-    setSelectedFilter(value);
+    if (value === '') {
+      setSelectedFilter('all');
+    } else {
+      setSelectedFilter(value);
+    }
   };
 
   const handlePrepTimeChange = (value) => {
@@ -117,6 +129,7 @@ export function RecipeList({ initialRecipes = [], error = null }) {
         onFilterChange={handleFilterChange}
         onPrepTimeChange={handlePrepTimeChange}
         recipeCount={filteredRecipes.length}
+        tags={tags}
       />
 
       {/* Liste des recettes */}
@@ -143,4 +156,4 @@ export function RecipeList({ initialRecipes = [], error = null }) {
       )}
     </>
   );
-} 
+}

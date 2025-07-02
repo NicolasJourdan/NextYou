@@ -6,8 +6,10 @@ import {
   CardHeader, 
   Button, 
   Chip, 
-  Divider
+  Divider,
+  Spinner
 } from "@heroui/react";
+import { useState } from "react";
 
 export function RecipeCard({ recipe, isFavorite, onToggleFavorite }) {
   // Obtenir les étoiles de difficulté
@@ -17,11 +19,24 @@ export function RecipeCard({ recipe, isFavorite, onToggleFavorite }) {
 
   // Obtenir la couleur du tag selon la catégorie
   const getTagColor = (tag) => {
-    if (tag.includes('végétarien') || tag.includes('vegan')) return 'success';
-    if (tag.includes('rapide')) return 'primary';
-    if (tag.includes('difficile')) return 'danger';
-    if (tag.includes('italienne') || tag.includes('française')) return 'secondary';
+    if (tag.category === 'diet') return 'success';
+    if (tag.category === 'cuisine') return 'secondary';
+    if (tag.category === 'meal') return 'warning';
     return 'default';
+  };
+
+  // Ajout de l'état de chargement
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Handler pour le bouton favori
+  const handleToggleFavorite = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
+    try {
+      await onToggleFavorite();
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -38,12 +53,15 @@ export function RecipeCard({ recipe, isFavorite, onToggleFavorite }) {
             isIconOnly
             size="sm"
             variant="light"
-            onClick={onToggleFavorite}
+            onClick={handleToggleFavorite}
             className="absolute top-3 right-3 z-10 p-1 rounded-full hover:bg-white shadow"
             aria-label={isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
             style={{ lineHeight: 1, fontSize: '1.5rem' }}
+            disabled={isLoading}
           >
-            {isFavorite ? '❤️' : '🤍'}
+            {isLoading ? (
+              <Spinner size="sm" color="default" />
+            ) : isFavorite ? '❤️' : '🤍'}
           </Button>
         </div>
       </CardHeader>
@@ -53,16 +71,16 @@ export function RecipeCard({ recipe, isFavorite, onToggleFavorite }) {
         <div className="space-y-2 mb-4">
           <div className="flex justify-between text-sm">
             <span className="text-gray-600 dark:text-gray-400">
-              ⏱️ {recipe.metadata.prepTime + recipe.metadata.cookTime}min (🔪 {recipe.metadata.prepTime}min{recipe.metadata.cookTime > 0 ? `, 🍳 ${recipe.metadata.cookTime}min` : ''})
+              ⏱️ {recipe.prepTime + recipe.cookTime}min (🔪 {recipe.prepTime}min{recipe.cookTime > 0 ? `, 🍳 ${recipe.cookTime}min` : ''})
             </span>
             <span className="text-gray-600 dark:text-gray-400">
-              👥 {recipe.metadata.servings} pers.
+              👥 {recipe.servings} pers.
             </span>
           </div>
 
           <div className="flex justify-between items-center">
             <span className="text-sm text-gray-600 dark:text-gray-400">
-              {getDifficultyStars(recipe.metadata.difficulty)}
+              {getDifficultyStars(recipe.difficulty)}
             </span>
             <span className="text-sm font-medium">
               🔥 {recipe.nutrition.calories} cal
@@ -73,23 +91,22 @@ export function RecipeCard({ recipe, isFavorite, onToggleFavorite }) {
         <Divider className="my-3" />
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1 mb-4">
-          {recipe.metadata.tags.slice(0, 3).map((tag, index) => (
-            <Chip
-              key={index}
-              size="sm"
-              color={getTagColor(tag)}
-              variant="flat"
-            >
-              {tag}
-            </Chip>
-          ))}
-          {recipe.metadata.tags.length > 3 && (
-            <Chip size="sm" variant="flat" color="default">
-              +{recipe.metadata.tags.length - 3}
-            </Chip>
-          )}
-        </div>
+        {recipe.tags && recipe.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1 mb-4">
+            {recipe.tags.map((tag, index) => {
+              return (
+                <Chip
+                  key={index}
+                  size="sm"
+                  color={getTagColor(tag)}
+                  variant="flat"
+                >
+                  {tag.name.charAt(0).toUpperCase() + tag.name.slice(1)}
+                </Chip>
+              )
+            })}
+          </div>
+        )}
 
         {/* Bouton voir la recette */}
         <Button

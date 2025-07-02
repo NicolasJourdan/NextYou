@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write {app,components,lib,utils}/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
+    "format": "prettier --write {app,components,lib,utils}/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
+    "seed-db": "node scripts/seed-database.js",
+    "reset-db": "node scripts/reset-database.js"
   },
   "dependencies": {
     "@heroui/react": "^2.7.11",

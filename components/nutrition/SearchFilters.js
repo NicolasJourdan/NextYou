@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Input, Select, SelectItem } from "@heroui/react";
 
-export function SearchFilters({ onSearchChange, onFilterChange, onPrepTimeChange, recipeCount = 0 }) {
+export function SearchFilters({ onSearchChange, onFilterChange, onPrepTimeChange, tags, recipeCount = 0 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedPrepTime, setSelectedPrepTime] = useState('all');
@@ -44,8 +44,9 @@ export function SearchFilters({ onSearchChange, onFilterChange, onPrepTimeChange
         >
           <SelectItem key="all" value="all">Toutes les recettes</SelectItem>
           <SelectItem key="favorites" value="favorites">Mes favoris</SelectItem>
-          <SelectItem key="quick" value="quick">Rapides (&lt; 15min)</SelectItem>
-          <SelectItem key="vegetarian" value="vegetarian">Végétariennes</SelectItem>
+          {tags.map((tag) => (
+            <SelectItem key={tag} value={tag}>{tag.charAt(0).toUpperCase() + tag.slice(1)}</SelectItem>
+          ))}
         </Select>
 
         <Select

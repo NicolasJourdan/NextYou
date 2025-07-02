@@ -13,7 +13,7 @@ export default async function NutritionPage() {
     // Les données JSON sont déjà parsées par mysql2
     recipes = dbRecipes.map(recipe => ({
       ...recipe,
-      tags: recipe.tags ? recipe.tags.split(',').map(tag => tag.trim()) : []
+      tags: recipe.tags ? (Array.isArray(recipe.tags) ? recipe.tags : JSON.parse(recipe.tags)) : []
     }));
   } catch (err) {
     console.error('Erreur lors du chargement des recettes:', err);

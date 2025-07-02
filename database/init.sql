@@ -9,7 +9,10 @@ CREATE TABLE IF NOT EXISTS recipes (
     ingredients JSON NOT NULL,
     steps JSON NOT NULL,
     nutrition JSON NOT NULL,
-    metadata JSON NOT NULL,
+    prepTime INT DEFAULT 0,
+    cookTime INT DEFAULT 0,
+    servings INT DEFAULT 1,
+    difficulty INT DEFAULT 1 CHECK (difficulty >= 1 AND difficulty <= 5),
     is_favorite BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -19,7 +22,7 @@ CREATE TABLE IF NOT EXISTS recipes (
 CREATE TABLE IF NOT EXISTS tags (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL,
-    category ENUM('diet', 'cuisine', 'difficulty', 'time', 'custom') DEFAULT 'custom',
+    category ENUM('diet', 'cuisine', 'meal', 'custom') DEFAULT 'custom',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -35,6 +38,7 @@ CREATE TABLE IF NOT EXISTS recipe_tags (
 -- Index pour améliorer les performances
 CREATE INDEX idx_recipes_title ON recipes(title);
 CREATE INDEX idx_recipes_favorite ON recipes(is_favorite);
+CREATE INDEX idx_recipes_difficulty ON recipes(difficulty);
 CREATE INDEX idx_recipes_created ON recipes(created_at);
 CREATE INDEX idx_tags_category ON tags(category);
 
@@ -47,6 +51,8 @@ INSERT IGNORE INTO tags (name, category) VALUES
 ('sans lactose', 'diet'),
 ('faible en calories', 'diet'),
 ('riche en protéines', 'diet'),
+('paleo', 'diet'),
+('keto', 'diet'),
 
 -- Types de cuisine
 ('française', 'cuisine'),
@@ -54,13 +60,14 @@ INSERT IGNORE INTO tags (name, category) VALUES
 ('asiatique', 'cuisine'),
 ('méditerranéenne', 'cuisine'),
 ('mexicaine', 'cuisine'),
+('indienne', 'cuisine'),
+('japonaise', 'cuisine'),
+('thaïlandaise', 'cuisine'),
 
--- Difficulté
-('facile', 'difficulty'),
-('moyen', 'difficulty'),
-('difficile', 'difficulty'),
-
--- Temps de préparation
-('rapide (< 15min)', 'time'),
-('moyen (15-30min)', 'time'),
-('long (> 30min)', 'time'); 
+-- Types de repas
+('petit-déjeuner', 'meal'),
+('déjeuner', 'meal'),
+('dîner', 'meal'),
+('dessert', 'meal'),
+('collation', 'meal'),
+('apéritif', 'meal');
